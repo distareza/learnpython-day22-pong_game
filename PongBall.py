@@ -1,4 +1,4 @@
-import time
+import random
 from turtle import Turtle, Screen
 
 
@@ -9,20 +9,23 @@ class Ball(Turtle):
     window_bottom = -290
     window_right = 390
     window_left = -390
+    ball_speed = 5
 
     def __init__(self, screen):
         super().__init__()
         self.shape("circle")
         self.color("white")
         self.my_screen = screen
-        self.setheading(45)
+
+        self.setheading(random.choice([45, 315, 135, 225]))
+
         self.my_screen.update()
 
     def move(self):
         self.penup()
         if self.detect_wall():
             self.bounce()
-        self.forward(5)
+        self.forward(self.ball_speed)
         self.pendown()
         self.my_screen.update()
 

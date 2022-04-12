@@ -44,16 +44,21 @@ screen.update()
 from PongBall import Ball
 ball = Ball(screen)
 
-
+# 8. Keep Score
 score_board = ScoreBoard()
 
 while True:
     ball.reset_position()
 
+    #7. Detect when paddle misses
     while not ball.is_out_of_range():
         time.sleep(0.01)
+
+        # 6. Detect Collision with paddle
         if ball.distance(r_paddle) < 20 or ball.distance(l_paddle) < 20:
             ball.bounce()
+
+        # 5. Detect collision with wall and bounce
         ball.move()
 
     if ball.is_ball_on_right():
